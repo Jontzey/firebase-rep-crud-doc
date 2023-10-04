@@ -1,0 +1,13 @@
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+<h3>Realtime database Crud</h3>
+<form style="display: flex; flex-direction: column;" #userForm="ngForm" (ngSubmit)="AddUser(userForm)">
+    <input placeholder="username" type="text" name="username" ngModel>
+    <input placeholder="email" type="text" name="email" ngModel>
+    <input placeholder="password" type="text" name="password" ngModel>
+    <button type="submit">Register</button>
+</form>
+
+
+</div>
+

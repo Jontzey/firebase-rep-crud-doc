@@ -1,0 +1,78 @@
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+        <p>firestore works!</p>
+        <p>Create, Read, Update, Delete with --FireStore database--</p>
+    <h3>
+        <a 
+        href="https://firebase.google.com/docs/firestore/query-data/get-data#web-modular-api">Read, Get single/multiple docs with Firestore
+        </a>
+    </h3>
+</div>
+<div>
+<form 
+style="display: flex; flex-direction: column; align-items: center; gap: 5px;" 
+#formData="ngForm" 
+(ngSubmit)="addFormData(formData)"
+>
+    <h3>Form</h3>
+    <input placeholder="Name" type="text" name="name" ngModel>
+    <input placeholder="Email"  type="text" name="email" ngModel>
+    <input placeholder="Password"  type="text" name="password" ngModel>
+    <button type="submit">Add data</button>
+</form>
+
+<div
+style="
+display: flex; 
+align-items: center; 
+justify-content: 
+center;">
+
+<div 
+style="
+display: flex; 
+flex-direction: row;
+align-items: center;
+justify-content: center;
+width: 200px; 
+gap: 5px; 
+border: solid;" 
+*ngFor="let data of allUsers; let i = index"
+>
+
+<div    
+        *ngIf="isFormEdit; else edit" >
+                <h3>{{data.name}}</h3>
+                <h3>{{data.email}}</h3>
+                <h3>{{data.password}}</h3>
+                <button (click)="deleteUser(data.id, i)" style="background-color: red;">Delete</button>
+                <button (click)="editUser()"> Change </button>
+     
+</div>
+   
+
+<ng-template #edit>
+    <form 
+            style="display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;" 
+            #formData="ngForm" 
+            (ngSubmit)="EditFormData(formData, i, data.id)"
+>
+            <h3>Form</h3>
+            <input placeholder="Name" type="text" [ngModel]="data.name" name="name">
+            <input placeholder="Email"  type="text" [ngModel]="data.email" name="email" ngModel>
+            <input placeholder="Password"  type="text" [ngModel]="data.password" name="password" ngModel>
+            <button type="submit">Save Change</button>
+    </form>
+</ng-template>
+  
+    
+</div>
+
+</div>
+<router-outlet></router-outlet>
+</div>
+
+

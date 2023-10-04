@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-crud-rep": {
+      "hosting": {
+        "firebase-rep-crud-doc": [
+          "fir-crud-rep"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-crud-rep"
+  }
+}
